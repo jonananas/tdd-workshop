@@ -7,6 +7,8 @@
 	<packaging>war</packaging>
 	<name>${project.artifactId} (${project.packaging})</name>
 
+
+
 	<dependencies>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -42,4 +44,17 @@
 			<version>1.8.5</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<target>1.6</target>
+					<source>1.6</source>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
