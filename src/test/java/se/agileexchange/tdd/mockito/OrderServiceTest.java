@@ -1,3 +1,11 @@
+
+/**
+ * This testclass shows several things
+ * - How a mock framework like mockito can be used to mock slow depencies
+ * - Build - Operate - Check pattern
+ * - Simple Given - When - Then DSL
+ */
+
 package se.agileexchange.tdd.mockito;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -43,7 +51,7 @@ public class OrderServiceTest {
 	}
 
 	@Test
-	public void shouldReturnNumberOfOrdersAgain() throws Exception {
+	public void given_when_then_refactored_shouldReturnNumberOfOrders() throws Exception {
 		givenBetalServiceHasThisManyOrders(10);
 		
 		int numberOfOrders = whenRetrievingNumberOfOrders();

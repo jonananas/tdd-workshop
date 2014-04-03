@@ -1,3 +1,7 @@
+/**
+ * Implementation of Roy Osheroves string calculator kata
+ * @see http://osherove.com/tdd-kata-1/ 
+ */
 package se.agileexchange.tdd.stringcalculator;
 
 import static org.fest.assertions.Assertions.assertThat;
