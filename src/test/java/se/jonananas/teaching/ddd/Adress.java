@@ -4,10 +4,14 @@ public class Adress {
 
 	private String gatuAdress;
 
-	public Adress(String gatuAdress) {
+	private Adress(String gatuAdress) {
 		this.gatuAdress = gatuAdress;
 	}
 
+	public static Adress createFrom(String gatuAdress) {
+		return new Adress(gatuAdress);
+	}
+	
 	public String getGatuadress() {
 		return gatuAdress;
 	}

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 
+@SuppressWarnings("serial")
 class Produkt implements Serializable {
 
 	private String name;
@@ -22,6 +23,10 @@ class Produkt implements Serializable {
 		return name;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Produkt))
@@ -29,9 +34,10 @@ class Produkt implements Serializable {
 		Produkt other = (Produkt)obj;
 		return this.id.equals(other.id);
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 	
+	@Override
+	public int hashCode() {
+		return 31 + ((id == null) ? 0 : id.hashCode());
+	}
+
 }
