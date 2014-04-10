@@ -29,5 +29,9 @@ class Produkt implements Serializable {
 		Produkt other = (Produkt)obj;
 		return this.id.equals(other.id);
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 }

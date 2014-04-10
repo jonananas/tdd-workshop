@@ -6,7 +6,6 @@ public class OrderService {
  
 	public void addOrder(String order) {
 		betalService.pay(order);
-		
 	}
 
 	public int getNumberOfOrders() {

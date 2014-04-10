@@ -26,4 +26,9 @@ public class ProduktRepositoryInMem implements ProduktRepository {
 		return new ProduktRepositoryInMem();
 	}
 
+	@Override
+	public void delete(Produkt gräsklippare) {
+		produkts.remove(gräsklippare.getName());
+	}
+
 }

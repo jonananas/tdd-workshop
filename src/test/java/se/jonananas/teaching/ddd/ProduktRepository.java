@@ -6,4 +6,6 @@ public interface ProduktRepository {
 
 	Produkt findByName(String name);
 
+	void delete(Produkt gräsklippare);
+
 }
