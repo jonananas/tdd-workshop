@@ -9,7 +9,7 @@ public class Person {
 	private String name;
 	private Adress adress;
 
-	public Person(String namn, Adress adress) {
+	private Person(String namn, Adress adress) {
 		this.name = namn;
 		this.adress = adress;
 		this.id = UUID.randomUUID();
@@ -41,6 +41,6 @@ public class Person {
 	
 	@Override
 	public int hashCode() {
-		return 31 + ((id == null) ? 0 : id.hashCode());
+		return id.hashCode();
 	}
 }

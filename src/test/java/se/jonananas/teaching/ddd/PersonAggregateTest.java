@@ -7,28 +7,28 @@ import org.junit.Test;
 
 public class PersonAggregateTest {
 
-	private Person gräsklippare;
+	private Person person;
 	private Adress adress;
 
 	@Before
 	public void setup() {
 		adress = Adress.createFrom("Storgatan");
-		gräsklippare = Person.createFromNameAndAdress("Pelle Person", adress);
+		person = Person.createFromNameAndAdress("Pelle Person", adress);
 	}
 
 	@Test
 	public void shouldCreatePerson() throws Exception {
-		assertThat(gräsklippare.getName()).isEqualTo("Pelle Person");
-		assertThat(gräsklippare.getAdress()).isEqualTo(adress);
+		assertThat(person.getName()).isEqualTo("Pelle Person");
+		assertThat(person.getAdress()).isEqualTo(adress);
 	}
 
 	@Test
 	public void shouldBeEqualOnlyToItself() throws Exception {
 		Person other = Person.createFromNameAndAdress("Pelle Person", Adress.createFrom("Storgatan"));
 		
-		Person same = gräsklippare;
+		Person same = person;
 
-		assertThat(same).isEqualTo(gräsklippare)
+		assertThat(same).isEqualTo(person)
 				.isNotEqualTo(other)
 				.isNotEqualTo(null)
 				.isNotEqualTo(new Object());
@@ -36,7 +36,7 @@ public class PersonAggregateTest {
 	
 	@Test
 	public void shouldSetName() throws Exception {
-		gräsklippare.setName("Palle Parsson");
-		assertThat(gräsklippare.getName()).isEqualTo("Palle Parsson");
+		person.setName("Palle Parsson");
+		assertThat(person.getName()).isEqualTo("Palle Parsson");
 	}
 }
