@@ -1,4 +1,4 @@
-package se.jonananas.teaching.ddd;
+package se.jonananas.teaching.ddd.tacticalPatterns;
 
 import java.io.Serializable;
 import java.util.UUID;

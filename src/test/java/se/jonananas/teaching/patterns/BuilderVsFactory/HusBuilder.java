@@ -1,12 +1,12 @@
-package se.jonananas.design.BuilderPattern;
+package se.jonananas.teaching.patterns.BuilderVsFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import se.jonananas.design.BuilderPattern.HusBuilderTest.Kök;
-import se.jonananas.design.BuilderPattern.HusBuilderTest.Rum;
-import se.jonananas.design.BuilderPattern.HusBuilderTest.Toalett;
-import se.jonananas.design.BuilderPattern.HusBuilderTest.Vardagsrum;
+import se.jonananas.teaching.patterns.BuilderVsFactory.HusBuilderTest.Kök;
+import se.jonananas.teaching.patterns.BuilderVsFactory.HusBuilderTest.Rum;
+import se.jonananas.teaching.patterns.BuilderVsFactory.HusBuilderTest.Toalett;
+import se.jonananas.teaching.patterns.BuilderVsFactory.HusBuilderTest.Vardagsrum;
 
 public class HusBuilder {
 	

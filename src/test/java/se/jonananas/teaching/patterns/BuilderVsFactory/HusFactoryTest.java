@@ -1,4 +1,4 @@
-package se.jonananas.design.theCaseForNaming;
+package se.jonananas.teaching.patterns.BuilderVsFactory;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class HusTest {
+public class HusFactoryTest {
 	
-	public class Hus {
+	public static class Hus {
 		private List<Rum> rum = new ArrayList<Rum>();
 
 		public List<Rum> rum() {
@@ -22,6 +22,14 @@ public class HusTest {
 
 		public int antalRum() {
 			return this.rum.size();
+		}
+
+		public static Hus createWithRum(Rum vardagsrum, Rum kök, Rum toalett) {
+			Hus hus = new Hus();
+			hus.add(vardagsrum);
+			hus.add(kök);
+			hus.add(toalett);
+			return hus;
 		}
 	}
 
@@ -39,17 +47,8 @@ public class HusTest {
 	
 	@Test
 	public void shouldContainRum() throws Exception {
-		Hus hus = new Hus();
-		
-		Rum vardagsrum = new Vardagsrum();
-		Rum kök = new Kök();
-		Rum toalett = new Toalett();
-		
-		hus.add(vardagsrum);
-		hus.add(kök);
-		hus.add(toalett);
+		Hus hus = Hus.createWithRum(new Vardagsrum(), new Kök(), new Toalett());
 		
 		assertThat(hus.antalRum()).isEqualTo(3);
-		assertThat(hus.rum()).contains(vardagsrum);
 	}
 }

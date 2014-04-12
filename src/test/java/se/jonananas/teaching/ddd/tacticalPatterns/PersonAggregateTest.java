@@ -1,4 +1,4 @@
-package se.jonananas.teaching.ddd;
+package se.jonananas.teaching.ddd.tacticalPatterns;
 
 import static org.fest.assertions.Assertions.assertThat;
 

@@ -1,9 +1,9 @@
-package se.jonananas.design.BuilderPattern;
+package se.jonananas.teaching.patterns.BuilderVsFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import se.jonananas.design.BuilderPattern.HusBuilderTest.Rum;
+import se.jonananas.teaching.patterns.BuilderVsFactory.HusBuilderTest.Rum;
 
 public class Hus {
 	private List<Rum> rum = new ArrayList<Rum>();

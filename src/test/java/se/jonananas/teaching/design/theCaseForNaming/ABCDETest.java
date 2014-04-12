@@ -1,4 +1,4 @@
-package se.jonananas.design.theCaseForNaming;
+package se.jonananas.teaching.design.theCaseForNaming;
 
 import static org.fest.assertions.Assertions.assertThat;
 

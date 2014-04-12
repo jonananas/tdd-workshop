@@ -1,4 +1,4 @@
-package se.jonananas.design.BuilderPattern;
+package se.jonananas.teaching.patterns.BuilderVsFactory;
 
 import static org.fest.assertions.Assertions.assertThat;
 
