@@ -2,15 +2,20 @@
  * Implementation of Roy Osheroves string calculator kata
  * @see http://osherove.com/tdd-kata-1/ 
  */
-package se.agileexchange.tdd.stringCalculator;
+package se.agileexchange.tdd.stringCalculatorWithLogging;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.Before;
 import org.junit.Test;
 
 
-public class StringCalculatorTest {
+public class StringCalculatorLoggingTest {
 	
 	
 	private StringCalculator stringCalculator;
@@ -18,6 +23,26 @@ public class StringCalculatorTest {
 	@Before
 	public void setup() {
 		stringCalculator = new StringCalculator();
+		stringCalculator.logger = mock(Logger.class);
+	}
+	
+	
+	@Test
+	public void shouldLogOutputOnEmptyString() throws Exception {
+		// When
+		stringCalculator.add("");
+		
+		// Then
+		verify(stringCalculator.logger).log(Level.INFO, "0");
+	}
+	
+	@Test
+	public void shouldLogOutputOnNumbers() throws Exception {
+		// When
+		stringCalculator.add("1,2");
+		
+		// Then
+		verify(stringCalculator.logger).log(Level.INFO, "3");
 	}
 	
 	@Test
