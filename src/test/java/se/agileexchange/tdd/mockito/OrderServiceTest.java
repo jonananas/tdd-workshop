@@ -25,6 +25,7 @@ public class OrderServiceTest {
 
 	@Before
 	public void setup() {
+		// BUILD
 		orderService = new OrderService();
 		betalService = mock(BetalServiceClient.class);
 		orderService.betalService = betalService; 

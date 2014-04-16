@@ -5,14 +5,15 @@
 package se.agileexchange.tdd.stringCalculatorWithLogging;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 
 
 public class StringCalculatorLoggingTest {
@@ -29,22 +30,38 @@ public class StringCalculatorLoggingTest {
 	
 	@Test
 	public void shouldLogOutputOnEmptyString() throws Exception {
-		// When
 		stringCalculator.add("");
 		
-		// Then
-		verify(stringCalculator.logger).log(Level.INFO, "0");
+		verify(stringCalculator.logger).info("0");
 	}
 	
 	@Test
 	public void shouldLogOutputOnNumbers() throws Exception {
-		// When
 		stringCalculator.add("1,2");
 		
-		// Then
-		verify(stringCalculator.logger).log(Level.INFO, "3");
+		verify(stringCalculator.logger).info("3");
+		verify(stringCalculator.logger, times(1)).info("3");
+	}
+
+	@Test
+	public void shouldLogOutputOnNumbersUsingCaptor() throws Exception {
+		
+		ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+		stringCalculator.add("1,2");
+		
+		verify(stringCalculator.logger).info(captor.capture());
+		assertThat(captor.getValue()).isEqualTo("3");
 	}
 	
+	@Test(expected=RuntimeException.class)
+	public void shouldLogOutputOnNumbers_() throws Exception {
+		doThrow(new RuntimeException()).when(stringCalculator.logger).info(anyString());
+		
+		stringCalculator.add("1,2");
+		
+		verify(stringCalculator.logger, times(1)).info("3");
+	}
+
 	@Test
 	public void shouldReturnZeroOnEmptyString() throws Exception {
 		assertThatResultIs("", 0);

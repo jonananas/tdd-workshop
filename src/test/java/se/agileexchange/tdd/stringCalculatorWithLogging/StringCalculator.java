@@ -1,7 +1,5 @@
 package se.agileexchange.tdd.stringCalculatorWithLogging;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class StringCalculator {
 
@@ -11,7 +9,7 @@ public class StringCalculator {
 		String delimiter = parseDelimiterOrUseDefault(numberString);
 		String numbers = getNumbersWithoutDelimiter(numberString);
 		final int result = add(numbers, delimiter);
-		logger.log(Level.INFO, "" + result);
+		logger.info(""+result);
 		return result;
 	}
 
