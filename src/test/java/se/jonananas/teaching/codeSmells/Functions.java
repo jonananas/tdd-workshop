@@ -14,6 +14,12 @@ public class Functions {
 	}
 
 
+	
+	
+	
+	
+	
+	
 	/*
 	 * F1
 	 * Too many arguments Prefer none one, two, three is ok (sort of) More than that is smelling
@@ -24,6 +30,17 @@ public class Functions {
 		return address + " " + apartment + "\n" + zip + city;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * F2
 	 * Output arguments
@@ -33,6 +50,19 @@ public class Functions {
 		label.label = address + " " + apartment + "\n" + zip + city;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * F3
 	 * Flag arguments
@@ -45,6 +75,19 @@ public class Functions {
 			renderTest();
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * F4/G9
 	 * Dead code

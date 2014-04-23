@@ -48,7 +48,7 @@ public class OrderServiceTest {
 		int numberOfOrders = orderService.getNumberOfOrders();
 		
 		// CHECK
-		then(numberOfOrders).isEqualTo(10);
+		assertThat(numberOfOrders).isEqualTo(10);
 	}
 
 	@Test

@@ -9,6 +9,25 @@ public class Comments {
 	class SellRequest {
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 *  C2
 	 *  Obsolete Comment
@@ -19,6 +38,27 @@ public class Comments {
 		return new SellRequest();
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 *  C3 
 	 *  Redundant Comment
@@ -36,6 +76,29 @@ public class Comments {
 		return new SellResponse(i);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * C5
 	 * Commented out code
@@ -48,3 +111,29 @@ public class Comments {
 		return new SellResponse(0);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

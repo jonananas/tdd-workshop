@@ -17,6 +17,17 @@ public class General {
 		
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * G1
 	 * Multiple languages in one source file
@@ -32,11 +43,29 @@ public class General {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * G3
 	 * Incorrect behavior at boundaries
 	 * Don't be lazy! Write test for it!
 	 */
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	/*
@@ -51,6 +80,17 @@ public class General {
 		
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * G5
 	 * Duplication
@@ -60,6 +100,19 @@ public class General {
 	 * G7
 	 *  Base Classes Depending on their derivatives
 	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*
 	 * G29
@@ -72,6 +125,15 @@ public class General {
 			return "Person is tall";
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*
 	 * G23
