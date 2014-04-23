@@ -3,7 +3,7 @@
  * @see http://osherove.com/tdd-kata-1/ 
  */
 
-package se.agileexchange.tdd.stringcalculator_lists;
+package se.jonananas.tdd.stringcalculator_lists;
 
 import static org.fest.assertions.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package se.agileexchange.tdd.mockito;
+package se.jonananas.tdd.mockito;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.mockito.Mockito.mock;

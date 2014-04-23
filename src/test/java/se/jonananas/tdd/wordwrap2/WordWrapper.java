@@ -1,4 +1,4 @@
-package se.agileexchange.tdd.wordwrap2;
+package se.jonananas.tdd.wordwrap2;
 
 class WordWrapper {
 

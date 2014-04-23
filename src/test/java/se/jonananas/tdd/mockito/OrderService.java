@@ -1,4 +1,4 @@
-package se.agileexchange.tdd.mockito;
+package se.jonananas.tdd.mockito;
 
 public class OrderService {
 

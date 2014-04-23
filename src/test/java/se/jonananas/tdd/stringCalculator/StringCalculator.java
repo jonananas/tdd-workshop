@@ -1,4 +1,4 @@
-package se.agileexchange.tdd.stringCalculator;
+package se.jonananas.tdd.stringCalculator;
 
 public class StringCalculator {
 	

@@ -2,7 +2,7 @@
  * Implementation of Roy Osheroves string calculator kata
  * @see http://osherove.com/tdd-kata-1/ 
  */
-package se.agileexchange.tdd.stringCalculator;
+package se.jonananas.tdd.stringCalculator;
 
 import static org.fest.assertions.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package se.agileexchange.tdd.stringcalculator_lists;
+package se.jonananas.tdd.stringcalculator_lists;
 
 import java.util.List;
 
