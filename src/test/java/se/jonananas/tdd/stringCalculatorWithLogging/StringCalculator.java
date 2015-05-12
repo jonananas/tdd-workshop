@@ -3,73 +3,73 @@ package se.jonananas.tdd.stringCalculatorWithLogging;
 
 public class StringCalculator {
 
-	Logger logger;
+    Logger logger;
 
-	public int add(String numberString) {
-		String delimiter = parseDelimiterOrUseDefault(numberString);
-		String numbers = getNumbersWithoutDelimiter(numberString);
-		final int result = add(numbers, delimiter);
-		logger.info(""+result);
-		return result;
-	}
+    public int add(String numberString) {
+        String delimiter = parseDelimiterOrUseDefault(numberString);
+        String numbers = getNumbersWithoutDelimiter(numberString);
+        final int result = add(numbers, delimiter);
+        logger.info("" + result);
+        return result;
+    }
 
-	private String parseDelimiterOrUseDefault(String string) {
-		String delimiter = "[,\n]";
-		if (hasNewDelimiter(string)) {
-			delimiter = parseDelimiter(string);
-		}
-		return delimiter;
-	}
+    private String parseDelimiterOrUseDefault(String string) {
+        String delimiter = "[,\n]";
+        if (hasNewDelimiter(string)) {
+            delimiter = parseDelimiter(string);
+        }
+        return delimiter;
+    }
 
-	private String getNumbersWithoutDelimiter(String numbers) {
-		if (hasNewDelimiter(numbers)) {
-			return removeDelimiterDefinition(numbers);
-		}
-		return numbers;
-	}
-	
-	private boolean hasNewDelimiter(String numbers) {
-		return numbers.startsWith("//");
-	}
+    private String getNumbersWithoutDelimiter(String numbers) {
+        if (hasNewDelimiter(numbers)) {
+            return removeDelimiterDefinition(numbers);
+        }
+        return numbers;
+    }
 
-	private int add(String numbers, String delimiter) {
-		if (numbers.isEmpty())
-			return 0;
-		return addNumbers(numbers.split(delimiter));
-	}
+    private boolean hasNewDelimiter(String numbers) {
+        return numbers.startsWith("//");
+    }
 
-	private String removeDelimiterDefinition(String numbers) {
-		return numbers.substring(4);
-	}
+    private int add(String numbers, String delimiter) {
+        if (numbers.isEmpty())
+            return 0;
+        return addNumbers(numbers.split(delimiter));
+    }
 
-	private String parseDelimiter(String numbers) {
-		return "[" + numbers.substring(2, 3) + "\n]";
-	}
+    private String removeDelimiterDefinition(String numbers) {
+        return numbers.substring(4);
+    }
 
-	private Integer parseNumber(String numbers) {
-		return Integer.valueOf(numbers);
-	}
+    private String parseDelimiter(String numbers) {
+        return "[" + numbers.substring(2, 3) + "\n]";
+    }
 
-	private int addNumbers(String[] split) {
-		throwOnNegativeNumbers(split);
-		int sum = 0;
-		for (String number : split) {
-			Integer intNum = parseNumber(number);
-			sum += intNum;
-		}
-		return sum;
-	}
+    private Integer parseNumber(String numbers) {
+        return Integer.valueOf(numbers);
+    }
 
-	private void throwOnNegativeNumbers(String[] split) {
-		String invalidNumbers = "";
-		for (String number : split) {
-			Integer intNum = parseNumber(number);
-			if (intNum < 0)
-				invalidNumbers += intNum + ",";
-		}
-		if (!invalidNumbers.isEmpty())
-			throw new IllegalArgumentException("negatives not allowed "
-					+ invalidNumbers.substring(0, invalidNumbers.length() - 1));
-	}
+    private int addNumbers(String[] split) {
+        throwOnNegativeNumbers(split);
+        int sum = 0;
+        for (String number : split) {
+            Integer intNum = parseNumber(number);
+            sum += intNum;
+        }
+        return sum;
+    }
+
+    private void throwOnNegativeNumbers(String[] split) {
+        String invalidNumbers = "";
+        for (String number : split) {
+            Integer intNum = parseNumber(number);
+            if (intNum < 0)
+                invalidNumbers += intNum + ",";
+        }
+        if (!invalidNumbers.isEmpty())
+            throw new IllegalArgumentException("negatives not allowed "
+                    + invalidNumbers.substring(0, invalidNumbers.length() - 1));
+    }
 
 }
