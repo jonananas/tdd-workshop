@@ -1,6 +1,8 @@
 package se.jonananas.tdd.stringCalculatorWithLogging;
 
 
+import java.util.logging.Logger;
+
 public class StringCalculator {
 
     Logger logger;

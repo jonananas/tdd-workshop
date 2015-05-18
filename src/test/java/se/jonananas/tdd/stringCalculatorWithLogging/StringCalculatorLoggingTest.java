@@ -7,14 +7,13 @@ package se.jonananas.tdd.stringCalculatorWithLogging;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
+
+import java.util.logging.Logger;
 
 
 public class StringCalculatorLoggingTest {
@@ -57,7 +56,7 @@ public class StringCalculatorLoggingTest {
 	@Test(expected=RuntimeException.class)
 	public void shouldLogOutputOnNumbers_() throws Exception {
 		doThrow(new RuntimeException()).when(stringCalculator.logger).info(anyString());
-		
+
 		stringCalculator.add("1,2");
 	}
 
