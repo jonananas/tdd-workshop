@@ -1,24 +1,30 @@
 package se.jonananas.tdd.mockito.se.jonananas.tdd.fakes;
 
 import org.fest.assertions.Assertions;
+import org.junit.Before;
 import org.junit.Test;
 
 public class OrderServiceTest {
 
-    @Test
-    public void shouldNotHaveOrder() throws Exception {
-        OrderService orderService = new OrderService(new OrderRepositoryInMem());
-        Order order = new Order();
+	Order order;
+	OrderService orderService;
 
-        Assertions.assertThat(orderService.hasOrder(order)).isFalse();
-    }
+	@Before
+	public void setUp() throws Exception {
+		order = new Order();
+		orderService = new OrderService(new OrderRepositoryInMem());
+	}
 
-    @Test
-    public void shouldHaveAddedOrder() throws Exception {
-        OrderService orderService = new OrderService(new OrderRepositoryInMem());
-        Order order = new Order();
-        orderService.addOrder(order);
+	@Test
+	public void shouldNotHaveOrder() throws Exception {
 
-        Assertions.assertThat(orderService.hasOrder(order)).isTrue();
-    }
+		Assertions.assertThat(orderService.hasOrder(order)).isFalse();
+	}
+
+	@Test
+	public void shouldHaveAddedOrder() throws Exception {
+		orderService.addOrder(order);
+
+		Assertions.assertThat(orderService.hasOrder(order)).isTrue();
+	}
 }

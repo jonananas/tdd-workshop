@@ -4,7 +4,7 @@ public class OrderService {
 
     OrderRepository orderRepository;
 
-    public OrderService(OrderRepositoryInMem orderRepository) {
+    public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 

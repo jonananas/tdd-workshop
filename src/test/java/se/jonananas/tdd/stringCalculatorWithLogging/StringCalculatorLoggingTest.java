@@ -1,6 +1,7 @@
 /**
  * Implementation of Roy Osheroves string calculator kata
- * @see http://osherove.com/tdd-kata-1/ 
+ * @see http://osherove.com/tdd-kata-1/
+ * @see http://docs.mockito.googlecode.com/hg/org/mockito/Mockito.html
  */
 package se.jonananas.tdd.stringCalculatorWithLogging;
 
@@ -58,8 +59,6 @@ public class StringCalculatorLoggingTest {
 		doThrow(new RuntimeException()).when(stringCalculator.logger).info(anyString());
 		
 		stringCalculator.add("1,2");
-		
-		verify(stringCalculator.logger, times(1)).info("3");
 	}
 
 	@Test
