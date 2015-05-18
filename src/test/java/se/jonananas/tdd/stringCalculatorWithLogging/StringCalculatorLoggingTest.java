@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -25,6 +26,7 @@ public class StringCalculatorLoggingTest {
 	public void setup() {
 		stringCalculator = new StringCalculator();
 		stringCalculator.logger = mock(Logger.class);
+		when(stringCalculator.logger.isLoggable(Level.INFO)).thenReturn(true);
 	}
 	
 	
@@ -58,6 +60,15 @@ public class StringCalculatorLoggingTest {
 		doThrow(new RuntimeException()).when(stringCalculator.logger).info(anyString());
 
 		stringCalculator.add("1,2");
+	}
+
+	@Test
+	public void shouldNotCallInfoWhenLoglevelWARN() throws Exception {
+		when(stringCalculator.logger.isLoggable(Level.INFO)).thenReturn(false);
+
+		stringCalculator.add("1,2");
+
+		verify(stringCalculator.logger, times(0)).info(anyString());
 	}
 
 	@Test

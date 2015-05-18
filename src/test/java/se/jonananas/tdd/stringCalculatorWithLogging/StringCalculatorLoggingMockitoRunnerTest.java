@@ -14,6 +14,7 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -35,6 +36,7 @@ public class StringCalculatorLoggingMockitoRunnerTest {
     public void setup() {
         stringCalculator = new StringCalculator();
         stringCalculator.logger = logger;
+        when(stringCalculator.logger.isLoggable(Level.INFO)).thenReturn(true);
     }
 
     @Test
@@ -65,6 +67,15 @@ public class StringCalculatorLoggingMockitoRunnerTest {
         doThrow(new RuntimeException()).when(stringCalculator.logger).info(anyString());
 
         stringCalculator.add("1,2");
+    }
+
+    @Test
+    public void shouldNotCallInfoWhenLoglevelWARN() throws Exception {
+        when(stringCalculator.logger.isLoggable(Level.INFO)).thenReturn(false);
+
+        stringCalculator.add("1,2");
+
+        verify(stringCalculator.logger, times(0)).info(anyString());
     }
 
     @Test
