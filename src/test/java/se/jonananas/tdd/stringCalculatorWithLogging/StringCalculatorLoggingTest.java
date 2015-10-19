@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 
 public class StringCalculatorLoggingTest {
 	
-	
 	private StringCalculator stringCalculator;
 
 	@Before
@@ -57,7 +56,7 @@ public class StringCalculatorLoggingTest {
 	}
 	
 	@Test(expected=RuntimeException.class)
-	public void shouldLogOutputOnNumbers_() throws Exception {
+	public void shouldThrowOnLoggerException() throws Exception {
 		doThrow(new RuntimeException()).when(stringCalculator.logger).info(anyString());
 
 		stringCalculator.add("1,2");

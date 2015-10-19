@@ -2,9 +2,8 @@ package se.jonananas.tdd.stringCalculator;
 
 public class StringCalculator {
 	
-	public int add(String string) {
+	public int add(String numbers) {
 		String delimiter = "[,\n]";
-		String numbers = string;
 		if (numbers.isEmpty())
 			return 0;
 		if (hasNewDelimiter(numbers)) {
@@ -32,6 +31,10 @@ public class StringCalculator {
 
 	private int add(String[] split) {
 		throwOnNegativeNumbers(split);
+		return addReduce(split);
+	}
+
+	private int addReduce(String[] split) {
 		int sum = 0;
 		for(String number:split) {
 			Integer intNum = parseNumber(number);

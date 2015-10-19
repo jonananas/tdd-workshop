@@ -14,7 +14,6 @@ import org.junit.Test;
 
 public class StringCalculatorTest {
 	
-	
 	private StringCalculator stringCalculator;
 
 	@Before
