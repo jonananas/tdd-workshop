@@ -1,6 +1,6 @@
 package se.jonananas.tdd.mockito.se.jonananas.tdd.fakes;
 
-import org.fest.assertions.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
