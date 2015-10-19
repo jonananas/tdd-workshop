@@ -6,6 +6,7 @@
  */
 package se.jonananas.tdd.stringCalculatorWithLogging;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +18,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 

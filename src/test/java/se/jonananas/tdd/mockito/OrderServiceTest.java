@@ -8,13 +8,15 @@
 
 package se.jonananas.tdd.mockito;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.fest.assertions.IntAssert;
+import org.assertj.core.api.AbstractIntegerAssert;
+import org.assertj.core.api.Assertions;
+import org.assertj.core.api.IntegerAssert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -60,7 +62,7 @@ public class OrderServiceTest {
 		then(numberOfOrders).isEqualTo(10);
 	}
 
-	private IntAssert then(int numberOfOrders) {
+	private AbstractIntegerAssert<?> then(int numberOfOrders) {
 		return assertThat(numberOfOrders);
 	}
 
