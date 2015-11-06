@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 
-public class Basics {
+public class MockitoBasics {
 	
 	@Test
 	public void basicFlow() throws Exception {

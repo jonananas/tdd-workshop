@@ -7,7 +7,6 @@ package se.jonananas.tdd.stringCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
