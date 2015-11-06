@@ -15,8 +15,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.assertj.core.api.AbstractIntegerAssert;
-import org.assertj.core.api.Assertions;
-import org.assertj.core.api.IntegerAssert;
 import org.junit.Before;
 import org.junit.Test;
 
