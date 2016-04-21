@@ -1,5 +1,7 @@
 package se.jonananas.tdd.mockito.se.jonananas.tdd.fakes;
 
+import static org.mockito.Mockito.when;
+
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,13 +25,13 @@ public class OrderServiceMockitoTest {
     }
 
     @Test
-    public void shouldNotHaveOrder() throws Exception {
+    public void shouldNotHaveOrderWhenEmpty() throws Exception {
         Assertions.assertThat(orderService.hasOrder(order)).isFalse();
     }
 
     @Test
-    public void shouldHaveAddedOrder() throws Exception {
-        Mockito.when(orderRepo.hasOrder(Mockito.<Order>any())).thenReturn(true);
+    public void shouldHaveOrderWhenAdded() throws Exception {
+        when(orderRepo.hasOrder(Mockito.<Order>any())).thenReturn(true);
         orderService.addOrder(order);
 
         Assertions.assertThat(orderService.hasOrder(order)).isTrue();
