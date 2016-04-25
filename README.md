@@ -13,6 +13,8 @@ It is also a good starting point to begin a new kata, with dependencies included
 # Installation
 Uses maven for dependency management. After cloning, import into eclipse using Import...->Existing Maven Project. Do similar for IntelliJ or your favourite IDE.
 
+The master branch uses java 8, use branch java6 if you need an older java.
+
 # Suggested escalation
 
 ## 1. TDD a simple class without dependencies
