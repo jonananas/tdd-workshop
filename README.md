@@ -28,7 +28,6 @@ The master branch uses java 8, use branch java6 if you need an older java.
 Goto <https://github.com/jonananas/tdd-the-database> and follow the instructions. 
 
 # TODO
-* Merge java8 branch into master, making master a java6 branch
 * Provide more detailed instructions for the Mockito kata
-* Add instructions for Factor and Builder kata.
+* Add instructions for Factory and Builder kata.
 * Possibly add TDD-instructions or video for beginners.
