@@ -27,6 +27,9 @@ The master branch uses java 8, use branch java6 if you need an older java.
 ## 3. TDD the database 
 Goto <https://github.com/jonananas/tdd-the-database> and follow the instructions. 
 
+# Links
+Goto <http://kata-log.rocks/> for more katas!
+
 # TODO
 * Provide more detailed instructions for the Mockito kata
 * Add instructions for Factory and Builder kata.
