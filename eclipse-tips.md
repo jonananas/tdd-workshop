@@ -1,7 +1,13 @@
 # Eclipse Tips for TDD
 
+* [Use AssertJ](Use AssertJ)
+* [Create your own Editor Template](Create your own Editor Template)
+* [Add used libraries to Favorites](Add used libraries to Favorites)
+* [Add a Rerun JUnit Test Key Binding](Add a Rerun JUnit Test Key Binding)
+* [Use MoreUnit](Use MoreUnit)
+
 ## Use AssertJ
-I prefer AssertJ:s fluent ``assertThat(expectaction).is(actual)`` over ``assertEquals(expectation, is(actual))`.
+I prefer AssertJ:s fluent ``assertThat(expectaction).is(actual)`` over ``assertEquals(expectation, is(actual))``.
 * AssertJ supports chaining, ie ``assertThat(expectaction).hasSize(9).startswith("start")``
 * Supports Java 8 exception assertions with ``assertThatThrownBy(() -> { throw new Exception("thrown!"); }).hasMessage("message");``
 * Has excellent collection support: ``assertThat(list).contains(item1, item2)``
