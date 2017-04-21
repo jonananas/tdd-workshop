@@ -18,11 +18,11 @@ The master branch uses java 8, use branch java6 if you need an older java.
 # Suggested escalation
 
 ## 1. TDD a simple class without dependencies
-<http://osherove.com/tdd-kata-1>
+[String Calculator Kata](http://osherove.com/tdd-kata-1)
 
-## 2. TDD a class using Mockito to mock a dependency 
-<http://www.slideshare.net/Jonananas/mockito-kata></br>
-** The instructions here need some more detail if you are a beginner **
+## 2. TDD a class using Mockito to mock a dependency
+[String Calculator Mockito Kata](stringcalculator-mockito-kata.md)<br>
+There are slides from intro to Mockito and kata (In swedish) at <http://www.slideshare.net/Jonananas/mockito-kata>
  
 ## 3. TDD the database 
 Goto <https://github.com/jonananas/tdd-the-database> and follow the instructions. 
