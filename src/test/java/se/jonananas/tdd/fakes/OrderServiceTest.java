@@ -1,4 +1,4 @@
-package se.jonananas.tdd.mockito.se.jonananas.tdd.fakes;
+package se.jonananas.tdd.fakes;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
