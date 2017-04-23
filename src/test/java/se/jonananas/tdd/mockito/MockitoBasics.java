@@ -12,15 +12,21 @@ public class MockitoBasics {
 	@Test
 	public void basicFlow() throws Exception {
 		// Build
-		String collaborator = mock(String.class);
-		when(collaborator.length()).thenReturn(3);
+		Collaborator collaborator = mock(Collaborator.class);
+		when(collaborator.query()).thenReturn(3);
 		
 		// operate
-		int length = collaborator.length();
+		int length = collaborator.query();
 		
 		// check
 		assertThat(length).isEqualTo(3);
-		verify(collaborator).length();
+		verify(collaborator).query();
 	}
 
+	public static class Collaborator {
+		public int query() {
+			throw new RuntimeException("Not implemented very complicated query!");
+		}
+	}
+	
 }

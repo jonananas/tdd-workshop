@@ -1,12 +1,13 @@
 package se.jonananas.tdd.stringcalculator_lists;
 
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+import java.util.Arrays;
 import java.util.List;
 
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-
 public class StringCalculator {
-	
+
 	public int add(String string) {
 		String delimiter = "[,\n]";
 		String numbers = string;
@@ -31,49 +32,19 @@ public class StringCalculator {
 		return numbers.startsWith("//");
 	}
 
-	private Integer parseNumber(String numbers) {
-		return Integer.valueOf(numbers);
-	}
-
 	private int add(String[] split) {
 		List<Integer> ints = parseNumbers(split);
 		throwOnNegativeNumbers(ints);
-		return sum(ints);
+		return ints.stream().mapToInt(x -> x).sum();
 	}
 
-	private int sum(List<Integer> ints) {
-		int sum = 0;
-		for(int number:ints) {
-			sum += number;
-		}
-		return sum;
-	}
-
-	private List<Integer> parseNumbers(String[] split) {
-		List<Integer> ints = Lists.newArrayList();  
-		for(String number:split) {
-			ints.add(parseNumber(number));
-		}
-		return ints;
-	}
-	
-	private List<Integer> getNegatives(List<Integer> ints) {
-		List<Integer> negatives = Lists.newArrayList();  
-		for(int intNum:ints) {
-			if (intNum < 0)
-				negatives.add(intNum);
-		}
-		return negatives;
+	private List<Integer> parseNumbers(String[] numbers) {
+		return Arrays.stream(numbers).map(Integer::valueOf).collect(toList());
 	}
 
 	private void throwOnNegativeNumbers(List<Integer> ints) {
-		List<Integer> negatives = getNegatives(ints);
-		if (!negatives.isEmpty())
-			throw new IllegalArgumentException("negatives not allowed " + toString(negatives));
-	}
-
-	private String toString(List<Integer> negatives) {
-		Joiner joiner = Joiner.on(",");
-		return joiner.join(negatives);
+		if (ints.stream().anyMatch(i -> i < 0))
+			throw new IllegalArgumentException(
+					"negatives not allowed " + ints.stream().filter(i -> i < 0).map(x -> "" + x).collect(joining(",")));
 	}
 }

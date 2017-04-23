@@ -1,7 +1,13 @@
 package se.jonananas.tdd.stringCalculator;
 
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.joining;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class StringCalculator {
-	
+
 	public int add(String numbers) {
 		String delimiter = "[,\n]";
 		if (numbers.isEmpty())
@@ -25,33 +31,11 @@ public class StringCalculator {
 		return numbers.startsWith("//");
 	}
 
-	private Integer parseNumber(String numbers) {
-		return Integer.valueOf(numbers);
+	private int add(String[] numbers) {
+		List<Integer> intList = stream(numbers).map(Integer::valueOf).collect(Collectors.toList());
+		if (intList.stream().anyMatch(i -> i < 0))
+			throw new IllegalArgumentException(
+					"negatives not allowed " + intList.stream().filter(i -> i < 0).map(x -> "" + x).collect(joining(",")));
+		return intList.stream().mapToInt(x -> x).sum();
 	}
-
-	private int add(String[] split) {
-		throwOnNegativeNumbers(split);
-		return addReduce(split);
-	}
-
-	private int addReduce(String[] split) {
-		int sum = 0;
-		for(String number:split) {
-			Integer intNum = parseNumber(number);
-			sum += intNum;
-		}
-		return sum;
-	}
-
-	private void throwOnNegativeNumbers(String[] split) {
-		String invalidNumbers = "";
-		for(String number:split) {
-			Integer intNum = parseNumber(number);
-			if (intNum < 0)
-				invalidNumbers += intNum + ",";
-		}
-		if (!invalidNumbers.isEmpty())
-			throw new IllegalArgumentException("negatives not allowed " + invalidNumbers.substring(0,invalidNumbers.length()-1));
-	}
-
 }

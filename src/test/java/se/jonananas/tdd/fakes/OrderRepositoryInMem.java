@@ -1,11 +1,10 @@
 package se.jonananas.tdd.fakes;
 
-import com.google.common.collect.Sets;
-
+import java.util.HashSet;
 import java.util.Set;
 
 public class OrderRepositoryInMem implements OrderRepository {
-    Set<Order> orders = Sets.newHashSet();
+    Set<Order> orders = new HashSet<>();
 
     @Override
     public void store(Order order) {

@@ -8,7 +8,6 @@ It is also a good starting point to begin a new kata, with dependencies included
 - JUnit
 - AssertJ
 - Mockito
-- Guava
 
 # Installation
 Uses maven for dependency management. After cloning, import into eclipse using Import...->Existing Maven Project. Do similar for IntelliJ or your favourite IDE.
