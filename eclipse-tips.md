@@ -9,7 +9,7 @@
 ## Use AssertJ
 I prefer AssertJ:s fluent ``assertThat(expectaction).is(actual)`` over ``assertEquals(expectation, is(actual))``.
 * AssertJ supports chaining, ie ``assertThat(expectaction).hasSize(9).startswith("start")``
-* Supports Java 8 exception assertions with ``assertThatThrownBy(() -> { throw new Exception("thrown!"); }).hasMessage("message");``
+* Supports Java 8 exception assertions with ``assertThatThrownBy(() -> { throw new Exception("thrown!"); }).isInstanceOf(Exception.class).hasMessage("message");``
 * Has excellent collection support: ``assertThat(list).contains(item1, item2)``
 * Try it! <http://joel-costigliola.github.io/assertj/assertj-core-quick-start.html>
 
