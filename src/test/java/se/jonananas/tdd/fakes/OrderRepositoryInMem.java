@@ -12,7 +12,7 @@ public class OrderRepositoryInMem implements OrderRepository {
     }
 
     @Override
-    public boolean hasOrder(Order order) {
-        return orders.contains(order);
+    public boolean hasOrder(int orderId) {
+        return orders.stream().anyMatch(i -> i.getId() == orderId);
     }
 }

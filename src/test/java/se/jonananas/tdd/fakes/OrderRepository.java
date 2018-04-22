@@ -4,5 +4,5 @@ public interface OrderRepository {
 
     void store(Order order);
 
-    boolean hasOrder(Order order);
+    boolean hasOrder(int orderId);
 }

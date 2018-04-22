@@ -11,7 +11,7 @@ public class OrderServiceTest {
 
 	@Before
 	public void setUp() throws Exception {
-		order = new Order();
+		order = Order.medId(3);
 		orderService = new OrderService(new OrderRepositoryInMem());
 	}
 

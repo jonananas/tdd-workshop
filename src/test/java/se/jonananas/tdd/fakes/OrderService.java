@@ -13,6 +13,6 @@ public class OrderService {
     }
 
     public boolean hasOrder(Order order) {
-        return this.orderRepository.hasOrder(order);
+        return this.orderRepository.hasOrder(order.getId());
     }
 }
