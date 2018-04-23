@@ -17,6 +17,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class OrderServiceMockitoTest {
 
+    public static final int ORDER_ID = 3;
     @Mock
     OrderRepository orderRepo;
     private OrderService orderService;
@@ -27,7 +28,7 @@ public class OrderServiceMockitoTest {
 
     @Before
     public void setup() {
-        order = Order.medId(3);
+        order = Order.medId(ORDER_ID);
         orderService = new OrderService(orderRepo);
     }
 
@@ -46,12 +47,10 @@ public class OrderServiceMockitoTest {
 
     @Test
     public void shouldQueryRepoForOrder() throws Exception {
-        when(orderRepo.hasOrder(anyInt())).thenReturn(true);
-        orderService.addOrder(order);
         orderService.hasOrder(order);
 
         verify(orderRepo).hasOrder(capturedOrder.capture());
-        assertThat(capturedOrder.getValue()).isEqualTo(3);
+        assertThat(capturedOrder.getValue()).isEqualTo(ORDER_ID);
     }
 
 }
