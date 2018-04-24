@@ -1,4 +1,4 @@
-package se.jonananas.tdd.wordwrap;
+package se.jonananas.tdd.solutions.wordwrap;
 
 import static junit.framework.Assert.assertEquals;
 

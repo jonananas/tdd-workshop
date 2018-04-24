@@ -1,4 +1,4 @@
-package se.jonananas.tdd.stringCalculatorWithLogging;
+package se.jonananas.tdd.solutions.stringCalculatorWithLogging;
 
 
 import java.util.logging.Level;

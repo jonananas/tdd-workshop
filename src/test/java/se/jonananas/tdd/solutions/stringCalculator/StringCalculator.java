@@ -1,4 +1,4 @@
-package se.jonananas.tdd.stringCalculator;
+package se.jonananas.tdd.solutions.stringCalculator;
 
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.joining;

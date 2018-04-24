@@ -4,7 +4,7 @@
  * @see http://osherove.com/tdd-kata-1/
  * @see http://docs.mockito.googlecode.com/hg/org/mockito/Mockito.html
  */
-package se.jonananas.tdd.stringCalculatorWithLogging;
+package se.jonananas.tdd.solutions.stringCalculatorWithLogging;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyString;

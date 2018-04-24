@@ -2,7 +2,8 @@
  * Implementation of Roy Osheroves string calculator kata
  * @see http://osherove.com/tdd-kata-1/ 
  */
-package se.jonananas.tdd.stringCalculator;
+
+package se.jonananas.tdd.solutions.stringcalculator_lists;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,6 +13,7 @@ import org.junit.Test;
 
 
 public class StringCalculatorTest {
+	
 	
 	private StringCalculator stringCalculator;
 

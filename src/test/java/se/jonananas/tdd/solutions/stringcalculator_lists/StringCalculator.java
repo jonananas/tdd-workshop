@@ -1,4 +1,4 @@
-package se.jonananas.tdd.stringcalculator_lists;
+package se.jonananas.tdd.solutions.stringcalculator_lists;
 
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
