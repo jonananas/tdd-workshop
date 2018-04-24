@@ -6,6 +6,7 @@
 package se.jonananas.tdd.solutions.stringCalculatorWithLogging;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
@@ -16,6 +17,8 @@ import static org.mockito.Mockito.when;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.assertj.core.api.AbstractIntegerAssert;
+import org.assertj.core.api.AbstractThrowableAssert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -76,64 +79,56 @@ public class StringCalculatorLoggingTest {
 
 	@Test
 	public void shouldReturnZeroOnEmptyString() throws Exception {
-		assertThatResultIs("", 0);
+		assertThatAdd("").isEqualTo(0);
 	}
 
 	@Test
 	public void shouldAddSingleNumber() throws Exception {
-		assertThatResultIs("1", 1);
-		assertThatResultIs("2", 2);
+		assertThatAdd("1").isEqualTo(1);
+		assertThatAdd("2").isEqualTo(2);
 	}
 
 	@Test
 	public void shouldAddTwoNumbers() throws Exception {
-		assertThatResultIs("1,2", 3);
+		assertThatAdd("1,2").isEqualTo(3);
 	}
 
 	@Test
 	public void shouldAddFiveNumbers() throws Exception {
-		assertThatResultIs("1,1,1,2,2", 7);
+		assertThatAdd("1,1,1,2,2").isEqualTo(7);
 	}
 
 	@Test
 	public void shouldAllowNewLines() throws Exception {
-		assertThatResultIs("1\n2,3", 6);
+		assertThatAdd("1\n2,3").isEqualTo(6);
 	}
 	
 	@Test
 	public void shouldAllowChangedDelimiter() throws Exception {
-		assertThatResultIs("//;\n1;2", 3);
+		assertThatAdd("//;\n1;2").isEqualTo(3);
 	}
 
 	@Test
 	public void shouldAllowChangedDelimiterAndNewline() throws Exception {
-		assertThatResultIs("//;\n1\n2", 3);
+		assertThatAdd("//;\n1\n2").isEqualTo(3);
 	}
 
 	@Test
 	public void shouldThrowOnNegative() throws Exception {
-		assertThatThrowsWithMessage("-1", "negatives not allowed -1");
-		assertThatThrowsWithMessage("-2", "negatives not allowed -2");
+		assertThrownByAdd("-1").hasMessage("negatives not allowed -1");
+		assertThrownByAdd("-2").hasMessage("negatives not allowed -2");
 	}
 	
 	@Test
 	public void shouldThrowAndReturnAllNegatives() throws Exception {
-		assertThatThrowsWithMessage("-1,-2", "negatives not allowed -1,-2");
+		assertThrownByAdd("-1,-2").hasMessage("negatives not allowed -1,-2");
 	}
 
-	private void assertThatThrowsWithMessage(String numbers, final String expected) {
-		String message = "";
-		try {
-			stringCalculator.add(numbers);
-		} catch (IllegalArgumentException ex) {
-			message = ex.getMessage();
-		}
-		assertThat(message).isEqualTo(expected);
+	private AbstractThrowableAssert<?, ? extends Throwable> assertThrownByAdd(String numbers) {
+		return assertThatThrownBy(() -> stringCalculator.add(numbers));
 	}
 
-	private void assertThatResultIs(final String numbers, final int expected) {
-		int result = stringCalculator.add(numbers);
-		assertThat(result).isEqualTo(expected);
+	private AbstractIntegerAssert<?> assertThatAdd(String numbers) {
+		return assertThat(stringCalculator.add(numbers));
 	}
-	
 }
