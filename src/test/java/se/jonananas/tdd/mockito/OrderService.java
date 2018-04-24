@@ -2,7 +2,7 @@ package se.jonananas.tdd.mockito;
 
 public class OrderService {
 
-	BetalServiceClient betalService;
+	PaymentServiceClient betalService;
  
 	public void addOrder(String order) {
 		betalService.pay(order);

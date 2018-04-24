@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
 
 public class StringCalculator {
 
-	public int add(String numbers) {
+
+    public int add(String numbers) {
 		String delimiter = "[,\n]";
 		if (numbers.isEmpty())
 			return 0;

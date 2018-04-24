@@ -21,33 +21,34 @@ import org.junit.Test;
 public class OrderServiceTest {
 	
 	private OrderService orderService;
-	private BetalServiceClient betalService;
+	private PaymentServiceClient paymentService;
 
 	@Before
 	public void setup() {
 		// BUILD
 		orderService = new OrderService();
-		betalService = mock(BetalServiceClient.class);
-		orderService.betalService = betalService; 
+		paymentService = mock(PaymentServiceClient.class);
+		orderService.betalService = paymentService;
 	}
 	
 	@Test
-	public void shouldCallService() throws Exception {
-		
+	public void shouldCallService() {
+		// OPERATE - call system under test
 		orderService.addOrder("anOrder");
-		
-		verify(betalService).pay(anyString());
+
+		// CHECK - verify outgoing message
+		verify(paymentService).pay(anyString());
 	}
 	
 	@Test
-	public void shouldReturnNumberOfOrders() throws Exception {
-		// BUILD
-		when(betalService.getNumberOfOrdersFor(anyString())).thenReturn(10);
+	public void shouldReturnNumberOfOrders() {
+		// BUILD - fake outgoing query
+		when(paymentService.getNumberOfOrdersFor(anyString())).thenReturn(10);
 		
-		// OPERATE
+		// OPERATE - call system under test
 		int numberOfOrders = orderService.getNumberOfOrders();
 		
-		// CHECK
+		// CHECK - verify query
 		assertThat(numberOfOrders).isEqualTo(10);
 	}
 
@@ -69,7 +70,7 @@ public class OrderServiceTest {
 	}
 
 	private void givenBetalServiceHasThisManyOrders(final int ordersInBetalservice) {
-		when(betalService.getNumberOfOrdersFor(anyString())).thenReturn(ordersInBetalservice);
+		when(paymentService.getNumberOfOrdersFor(anyString())).thenReturn(ordersInBetalservice);
 	}
 
 }

@@ -1,6 +1,6 @@
 package se.jonananas.tdd.mockito;
 
-public interface BetalServiceClient {
+public interface PaymentServiceClient {
 	
 	public void pay(String order);
 

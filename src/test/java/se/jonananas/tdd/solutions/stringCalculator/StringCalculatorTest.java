@@ -17,6 +17,7 @@ public class StringCalculatorTest {
 
 	@Before
 	public void setup() {
+
 		stringCalculator = new StringCalculator();
 	}
 	
@@ -81,5 +82,4 @@ public class StringCalculatorTest {
 		int result = stringCalculator.add(numbers);
 		assertThat(result).isEqualTo(expected);
 	}
-	
 }
