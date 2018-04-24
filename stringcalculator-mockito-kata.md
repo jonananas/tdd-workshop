@@ -1,5 +1,5 @@
 # StringCalculator Mockito Kata
-This kata is intended to get you started with Mockito. Start from[String Calculator Kata](http://osherove.com/tdd-kata-1). Test first!
+This kata is intended to get you started with Mockito. Start from [String Calculator Kata](http://osherove.com/tdd-kata-1). Test first!
 
 1. StringCalculator should receive a Logger interface in it's constructor. Write the interface yourself.
 2. Log each result of call to add() with log.info(String message). For example "1+1" should result in log.info("2"). Tip: Use verify().
