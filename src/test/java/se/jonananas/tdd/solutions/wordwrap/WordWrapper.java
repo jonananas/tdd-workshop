@@ -6,11 +6,9 @@ class WordWrapper {
 		int wrapPoint = findWrapPoint(text, preferredLength);
 		if (wrapPoint <= 0)
 			return text;
-		return makeLine(text, wrapPoint) + wrap(text.substring(wrapPoint + 1), preferredLength);
-	}
-
-	private String makeLine(String text, int wrapPoint) {
-		return text.substring(0,wrapPoint) + "\n";
+		String head = text.substring(0,wrapPoint);
+		String tail = text.substring(wrapPoint + 1);
+		return head + "\n" + wrap(tail, preferredLength);
 	}
 
 	private int findWrapPoint(String text, int preferredLength) {
