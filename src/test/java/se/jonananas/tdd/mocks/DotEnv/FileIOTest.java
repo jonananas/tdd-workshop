@@ -24,7 +24,7 @@ public class FileIOTest {
 
 	@Test
 	public void shouldWriteAndReadLines() throws Exception {
-		fileIO.write(lines, path);
+		fileIO.writeLines(lines, path);
 		List<String> result = fileIO.readLines(path);
 		assertThat(result).isEqualTo(lines);
 	}

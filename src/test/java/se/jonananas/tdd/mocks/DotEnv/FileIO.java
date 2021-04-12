@@ -7,8 +7,8 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public final class FileIO {
-	public void write(List<String> lines, Path path) throws IOException {
+public class FileIO {
+	public void writeLines(List<String> lines, Path path) throws IOException {
 		Files.write(path, lines, Charset.forName("UTF8"));
 	}
 	

@@ -1,4 +1,4 @@
-package se.jonananas.tdd.mocks.DotEnv;
+package se.jonananas.tdd.mocks.testdoubles;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,14 +11,8 @@ import java.util.stream.Collectors;
 
 import org.junit.Test;
 
+import se.jonananas.tdd.mocks.DotEnv.FileIO;
 
-/**
-* DotEnv is a Map<String, String> 
-* DotEnvFiles has a DotEnv read(Path path) method
-* If path does not exist: Throws a java.nio.file.NoSuchFileException
-* For file "KEY1=VALUE1", dotenv.get("KEY1") should return VALUE1
-* For file "KEY1=VALUE1\nKEY2=VALUE2", dotenv.get("KEY2") should return VALUE2
- */
 
 class DotEnv {
 
@@ -96,8 +90,7 @@ class FileIOFake extends FileIO {
 }
 
 
-
-public class DotEnvTest {
+public class TestDoubles {
 	
 	@Test
 	public void shouldCreateDotEnv() throws Exception {
