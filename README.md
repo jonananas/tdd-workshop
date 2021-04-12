@@ -20,7 +20,9 @@ The master branch uses java 8, use branch java6 if you need an older java.
 [String Calculator Kata](http://osherove.com/tdd-kata-1)
 
 ## 2. TDD a class using Mockito to mock a dependency
-[String Calculator Mockito Kata](stringcalculator-mockito-kata.md)<br>
+Either [DotEnv Mockito Kata](DotEnv_Mockito_Kata.md)  
+or  
+[String Calculator Mockito Kata](stringcalculator-mockito-kata.md)    
 There are slides from intro to Mockito and kata (In swedish) at <http://www.slideshare.net/Jonananas/mockito-kata><br>
 More about Mockito can be found at <http://static.javadoc.io/org.mockito/mockito-core/2.18.3/org/mockito/Mockito.html#1>
  
