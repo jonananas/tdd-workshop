@@ -18,12 +18,13 @@ The kata:
 	3. Make sure an ```IOException``` is propagated when ```Path``` cannot be found.
 		- Use ```Mockito.when()``` to tell fileIO to throw an exception
  
-3. DotEnv write method should take a Path to the file and a ```Map<String, String>```.
+3. DotEnv write method should take a ``Path``` to the file and a ```Map<String, String>```.
 	1. Make sure ```fileio.writeLines``` is called from ```DotEnv.write```
 		- Use ```Mockito.verify()``` and ```Mockito.any()```
 	2. Make sure path is passed to ```fileio.writeLines```
  		- Use ```Mockito.eq()```
 	3. Make sure the lines ["KEY=VALUE", "KEY2=VALUE2"] is passed to writeLines for a map {"KEY": "VALUE", "KEY2": "VALUE2"}
  		- Use the Mockito ```@Captor``` on class member ```ArgumentCaptor<List<String>>``` lines
+	4. Make sure an ```IOException``` is propagated when ```Path``` cannot be written to.
 
-You are done! You may optionally run an integration test to prove the file is read and written correctly
+You are done! You may optionally run an integration test to prove the file is read and written correctly.
