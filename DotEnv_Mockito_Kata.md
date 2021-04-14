@@ -11,12 +11,12 @@ The kata:
 
 2. DotEnv read method should take a ```Path``` to the file and return a ```Map<String, String>```, 
 		ie ```public Map<String, String> read(Path path)```
-	1. Make sure an ```IOException``` is thrown if ```Path``` is not ".env"
-		- Use ```Mockito.when()``` to tell fileIO to throw an exception
-	2. When path is ".env", return "KEY=VALUE" from fileIO
+	1. When path is ".env", return "KEY=VALUE" from fileIO
  		- Use ```Mockito.when()``` to tell fileIO what to return
  		- assert that the map returned by DotEnv is correct, ie get("KEY") should be "VALUE"
-  	3. Assert that the lines ["KEY=VALUE", "KEY2=VALUE2"] returns a map with the keys KEY and KEY2.
+  	2. Assert that the lines ["KEY=VALUE", "KEY2=VALUE2"] returns a map with the keys KEY and KEY2.
+	3. Make sure an ```IOException``` is propagated when ```Path``` cannot be found.
+		- Use ```Mockito.when()``` to tell fileIO to throw an exception
  
 3. DotEnv write method should take a Path to the file and a ```Map<String, String>```.
 	1. Make sure ```fileio.writeLines``` is called from ```DotEnv.write```
