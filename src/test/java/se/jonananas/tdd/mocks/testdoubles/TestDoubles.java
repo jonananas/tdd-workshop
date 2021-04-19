@@ -1,5 +1,7 @@
 package se.jonananas.tdd.mocks.testdoubles;
 
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
@@ -7,6 +9,7 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
@@ -23,11 +26,20 @@ class DotEnv {
 	}
 
 	public Map<String, String> read() throws IOException {
-		return fileIO.readLines(null).stream().collect(Collectors.toMap(item -> item, item -> item));
+		Function<String, String> key = str -> str.split("=")[0];
+		Function<String, String> value = str -> str.split("=")[1];
+		return fileIO
+				.readLines(null)
+				.stream()
+				.collect(toMap(key, value));
 	}
 
-	public void write(Map<String, String> map) throws IOException {	
-		fileIO.writeLines(null, null);
+	public void write(Map<String, String> map) throws IOException {
+		List<String> lines = map.keySet()
+				.stream()
+				.map(key -> key + "=" + map.get(key))
+				.collect(toList());
+		fileIO.writeLines(lines, null);
 	}
 }
 
@@ -49,7 +61,7 @@ class FileIODummy extends FileIO {
 class FileIOStub extends FileIO {
 	@Override
 	public List<String> readLines(Path path) throws IOException {
-		return Arrays.asList("First line");
+		return Arrays.asList("key=value");
 	}
 	
 	@Override
@@ -65,7 +77,7 @@ class FileIOSpy extends FileIO {
 	
 	@Override
 	public List<String> readLines(Path path) throws IOException {
-		return Arrays.asList("First line");
+		return null;
 	}
 	
 	@Override
@@ -86,6 +98,7 @@ class FileIOFake extends FileIO {
 	
 	@Override
 	public void writeLines(java.util.List<String> lines, Path path) throws IOException {
+		this.fileContents = lines;
 	};
 }
 
@@ -93,8 +106,9 @@ class FileIOFake extends FileIO {
 public class TestDoubles {
 	
 	@Test
-	public void shouldCreateDotEnv() throws Exception {
-		new DotEnv(new FileIODummy());
+	public void shouldIgnoreWrites() throws Exception {
+		DotEnv dotEnv = new DotEnv(new FileIODummy());
+		dotEnv.write(Map.of());
 	}
 	
 	@Test
@@ -109,19 +123,18 @@ public class TestDoubles {
 		FileIOSpy fileIO = new FileIOSpy();
 		DotEnv dotEnv = new DotEnv(fileIO);
 		
-		dotEnv.write(null);
+		dotEnv.write(Map.of());
 		
 		assertThat(fileIO.writeLinesCalled).isTrue();
 	}
 
 	@Test
-	public void shouldReadKeyValue() throws Exception {
-		FileIOFake fileIO = new FileIOFake();
-		fileIO.fileContents = Arrays.asList("KEY=VALUE");
+	public void shouldReturnWrittenLines() throws Exception {
+		DotEnv dotEnv = new DotEnv(new FileIOFake());
+
+		dotEnv.write(Map.of("KEY", "VALUE"));
 		
-		DotEnv dotEnv = new DotEnv(fileIO);
-		
-		assertThat(dotEnv.read().get("KEY=VALUE")).isEqualTo("KEY=VALUE");
+		assertThat(dotEnv.read().get("KEY")).isEqualTo("VALUE");
 	}
 	
 }
