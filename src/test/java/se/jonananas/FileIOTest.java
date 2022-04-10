@@ -1,4 +1,4 @@
-package se.jonananas.tdd.mocks.DotEnv;
+package se.jonananas;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;

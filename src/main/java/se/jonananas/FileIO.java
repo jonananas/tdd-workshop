@@ -1,4 +1,4 @@
-package se.jonananas.tdd.mocks.DotEnv;
+package se.jonananas;
 
 import static java.nio.file.Files.lines;
 import static java.util.stream.Collectors.toList;

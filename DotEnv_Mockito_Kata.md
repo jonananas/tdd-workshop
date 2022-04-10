@@ -1,7 +1,7 @@
 # DotEnv Mockito Kata
 
 We are going to create a utility that helps editing .env files, without writing or reading from disk.
-We rely on the FileIO utility class for that, feel free to check @see FileIOTest.java to understand what it does.
+We rely on the FileIO utility class for that, feel free to take a look at [FileIOTest.java](src/test/java/se/jonananas/FileIOTest.java) to understand what it does.
 See [Mockito](http://static.javadoc.io/org.mockito/mockito-core/4.4.0/org/mockito/Mockito.html#1) for help on Mockito.
 The kata:
 

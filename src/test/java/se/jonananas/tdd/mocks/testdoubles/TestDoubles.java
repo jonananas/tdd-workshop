@@ -13,7 +13,7 @@ import java.util.function.Function;
 
 import org.junit.jupiter.api.Test;
 
-import se.jonananas.tdd.mocks.DotEnv.FileIO;
+import se.jonananas.FileIO;
 
 
 class DotEnv {
