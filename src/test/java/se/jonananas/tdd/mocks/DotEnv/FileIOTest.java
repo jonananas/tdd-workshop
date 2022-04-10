@@ -8,8 +8,8 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 
 
 public class FileIOTest {
@@ -17,7 +17,7 @@ public class FileIOTest {
 	Path path = Paths.get(".env");
 	FileIO fileIO = new FileIO();
 	
-	@After
+	@AfterEach
 	public void cleanup() throws Exception {
 		Files.delete(path);		
 	}

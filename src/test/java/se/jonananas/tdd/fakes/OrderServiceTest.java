@@ -1,15 +1,15 @@
 package se.jonananas.tdd.fakes;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
 
 	Order order;
 	OrderService orderService;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		order = Order.medId(3);
 		orderService = new OrderService(new OrderRepositoryInMem());
