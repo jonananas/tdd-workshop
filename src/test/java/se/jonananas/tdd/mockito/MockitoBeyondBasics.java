@@ -16,10 +16,17 @@ import org.mockito.Mock;
 @ExtendWith(MockitoExtension.class)
 public class MockitoBeyondBasics {
 	
-	@Mock
-	Logger log;
+	@Mock Logger log;
+	@Captor ArgumentCaptor<String> captor;
 	
-	
+	@Test
+	public void usingInjectedCaptor() throws Exception {
+		log.info("a very complicated message");
+		
+		verify(log).info(captor.capture());
+		assertThat(captor.getValue()).matches(".+ message");
+	}
+
 	@Test
 	public void usingCaptor() throws Exception {
 		ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
@@ -30,15 +37,4 @@ public class MockitoBeyondBasics {
 		assertThat(captor.getValue()).matches(".+ message");
 	}
 	
-	
-	@Captor
-	ArgumentCaptor<String> captor;
-	
-	@Test
-	public void usingInjectedCaptor() throws Exception {
-		log.info("a very complicated message");
-		
-		verify(log).info(captor.capture());
-		assertThat(captor.getValue()).matches(".+ message");
-	}
 }
