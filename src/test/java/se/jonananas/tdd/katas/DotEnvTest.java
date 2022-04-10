@@ -1,4 +1,4 @@
-package se.jonananas.tdd.mocks.DotEnv;
+package se.jonananas.tdd.katas;
 
 import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,43 +15,16 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import se.jonananas.FileIO;
 
-/**
- * 
- * We are going to create a utility that helps editing .env files, without writing or reading from disk.
- * We rely on the FileIO utility class for that, feel free to check @see FileIOTest.java to understand what it does.
- * The kata:
- *  
- * 1. Create class DotEnv with a constructor that takes FileIO as parameter, 
- * 		ie public DotEnv(FileIO fileIO)
- * 		Use @RunWith(MockitoJUnitRunner.class) and @Mock to initialize class parameter fileIO
- * 
- * 2. DotEnv read method should take a Path to the file and return a Map<String, String>, 
- * 		ie public Map<String, String> read(Path path)
- * 	a. Make sure an IOException is thrown if Path is not ".env"
- * 		Use Mockito.when() to tell fileIO to throw an exception
- *  b. When path is ".env", return "KEY=VALUE" from fileIO
- *  	Use Mockito.when() to tell fileIO what to return
- *  	assert that the map returned by DotEnv is correct, ie get("KEY") should be "VALUE"
- *  c. Assert that the lines ["KEY=VALUE", "KEY2=VALUE2"] returns a map with the keys KEY and KEY2.
- *  
- * 3. DotEnv write method should take a Path to the file and a Map<String, String>.
- * 	a. Make sure fileio.writeLines is called from DotEnv.write
- * 		Use Mockito.verify() and Mockito.any()
- *  b. Make sure path is passed to fileio.writeLines
- *  	Use  Mockito.eq()
- *  c. Make sure the lines ["KEY=VALUE", "KEY2=VALUE2"] is passed to writeLines for a map {"KEY": "VALUE", "KEY2": "VALUE2"}
- *  	Use @Captor on class member ArgumentCaptor<List<String>> lines
- *  
- */
 
 class DotEnv {
 	private FileIO fileIO;
@@ -84,7 +57,7 @@ class DotEnv {
 	}
 }
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class DotEnvTest {
 	
 	DotEnv dotEnv;
@@ -96,7 +69,7 @@ public class DotEnvTest {
 	@Captor
 	ArgumentCaptor<List<String>> lines;
 	
-	@Before
+	@BeforeEach
 	public void init() {
 		dotEnv = new DotEnv(fileIO);
 	}

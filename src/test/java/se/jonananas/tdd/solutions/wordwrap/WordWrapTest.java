@@ -1,22 +1,24 @@
 package se.jonananas.tdd.solutions.wordwrap;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class WordWrapTest {
 	
 	private WordWrapper wordWrapper;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		wordWrapper = new WordWrapper();
 	}
 	
-	@Test(expected=NullPointerException.class)
+	@Test
 	public void shouldThrowOnNullString() throws Exception {
-		wordWrapper.wrap(null, 0);
+
+		assertThrows(NullPointerException.class, () -> wordWrapper.wrap(null, 0));
 	}
 	
 	@Test

@@ -8,7 +8,8 @@ package se.jonananas.tdd.solutions.stringCalculatorWithLogging;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Matchers.anyString;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -19,15 +20,15 @@ import java.util.logging.Logger;
 
 import org.assertj.core.api.AbstractIntegerAssert;
 import org.assertj.core.api.AbstractThrowableAssert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class StringCalculatorLoggingMockitoRunnerTest {
 
     private StringCalculator stringCalculator;
@@ -38,7 +39,7 @@ public class StringCalculatorLoggingMockitoRunnerTest {
     @Captor
     ArgumentCaptor<String> captor;
 
-    @Before
+    @BeforeEach
     public void setup() {
         stringCalculator = new StringCalculator();
         stringCalculator.logger = logger;
@@ -68,11 +69,11 @@ public class StringCalculatorLoggingMockitoRunnerTest {
         assertThat(captor.getValue()).isEqualTo("3");
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void shouldLogOutputOnNumbers_() throws Exception {
         doThrow(new RuntimeException()).when(stringCalculator.logger).info(anyString());
 
-        stringCalculator.add("1,2");
+        assertThrows(RuntimeException.class, () -> stringCalculator.add("1,2"));
     }
 
     @Test

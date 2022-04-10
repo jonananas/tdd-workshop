@@ -7,7 +7,8 @@ package se.jonananas.tdd.solutions.stringCalculatorWithLogging;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Matchers.anyString;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -19,8 +20,8 @@ import java.util.logging.Logger;
 
 import org.assertj.core.api.AbstractIntegerAssert;
 import org.assertj.core.api.AbstractThrowableAssert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
 
@@ -28,7 +29,7 @@ public class StringCalculatorLoggingTest {
 	
 	private StringCalculator stringCalculator;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		stringCalculator = new StringCalculator();
 		stringCalculator.logger = mock(Logger.class);
@@ -61,11 +62,11 @@ public class StringCalculatorLoggingTest {
 		assertThat(captor.getValue()).isEqualTo("3");
 	}
 	
-	@Test(expected=RuntimeException.class)
+	@Test
 	public void shouldThrowOnLoggerException() throws Exception {
 		doThrow(new RuntimeException()).when(stringCalculator.logger).info(anyString());
 
-		stringCalculator.add("1,2");
+		assertThrows(RuntimeException.class, () -> stringCalculator.add("1,2"));
 	}
 
 	@Test

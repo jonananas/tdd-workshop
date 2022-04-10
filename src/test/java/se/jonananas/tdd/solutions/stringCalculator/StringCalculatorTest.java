@@ -10,15 +10,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.assertj.core.api.AbstractIntegerAssert;
 import org.assertj.core.api.AbstractThrowableAssert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 
 public class StringCalculatorTest {
 	
 	private StringCalculator stringCalculator;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 
 		stringCalculator = new StringCalculator();
