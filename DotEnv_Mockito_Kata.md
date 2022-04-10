@@ -1,9 +1,11 @@
 # DotEnv Mockito Kata
 
-We are going to create a utility that helps editing .env files, without writing or reading from disk.
-We rely on the FileIO utility class for that, feel free to take a look at [FileIOTest.java](src/test/java/se/jonananas/FileIOTest.java) to understand what it does.
+We are going to create a utility that helps editing .env files using TDD. The tests will use Mockito to mock the FileIO utility class so that we do not create tests that read or write from disk.  
+Feel free to take a look at [FileIOTest.java](src/test/java/se/jonananas/FileIOTest.java) to understand what the utility class does.
+
 See [Mockito](http://static.javadoc.io/org.mockito/mockito-core/4.4.0/org/mockito/Mockito.html#1) for help on Mockito.
-The kata:
+
+## The kata
 
 1. DotEnvTest should inject `FileIO` mock, e.g. `assertThat(fileIO).isNotNull()`
 
