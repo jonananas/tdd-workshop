@@ -8,6 +8,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
@@ -132,9 +133,11 @@ public class DotEnvTest {
 	@Test
 	public void integrationTest() throws Exception {
 		Map<String, String> env = Map.of("KEY", "VALUE", "KEY2", "VALUE2");
-		
-		DotEnv dotEnv = new DotEnv();
-		
-		dotEnv.write(path, env);
+		new DotEnv().write(path, env);
+
+		Map<String, String> readEnv = new DotEnv().read(path);
+		assertThat(readEnv).isEqualTo(env);
+
+		Files.delete(path);
 	}
 }

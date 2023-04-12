@@ -18,6 +18,6 @@ public class StringCalculatorTest {
 
     @Test
     public void canaryTest() {
-        assertThat(false).isTrue();
+        assertThat(true).isTrue();
     }
 }
