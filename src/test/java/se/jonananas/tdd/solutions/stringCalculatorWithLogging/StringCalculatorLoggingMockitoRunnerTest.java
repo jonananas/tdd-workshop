@@ -43,11 +43,12 @@ public class StringCalculatorLoggingMockitoRunnerTest {
     public void setup() {
         stringCalculator = new StringCalculator();
         stringCalculator.logger = logger;
-        when(stringCalculator.logger.isLoggable(Level.INFO)).thenReturn(true);
     }
 
     @Test
     public void shouldLogOutputOnEmptyString() throws Exception {
+        when(stringCalculator.logger.isLoggable(Level.INFO)).thenReturn(true);
+
         stringCalculator.add("");
 
         verify(stringCalculator.logger).info("0");
@@ -55,6 +56,8 @@ public class StringCalculatorLoggingMockitoRunnerTest {
 
     @Test
     public void shouldLogOutputOnNumbers() throws Exception {
+        when(stringCalculator.logger.isLoggable(Level.INFO)).thenReturn(true);
+
         stringCalculator.add("1,2");
 
         verify(stringCalculator.logger, times(1)).info("3");
@@ -62,6 +65,7 @@ public class StringCalculatorLoggingMockitoRunnerTest {
 
     @Test
     public void shouldLogOutputOnNumbersUsingCaptor() throws Exception {
+        when(stringCalculator.logger.isLoggable(Level.INFO)).thenReturn(true);
 
         stringCalculator.add("1,2");
 
@@ -71,6 +75,8 @@ public class StringCalculatorLoggingMockitoRunnerTest {
 
     @Test
     public void shouldLogOutputOnNumbers_() throws Exception {
+        when(stringCalculator.logger.isLoggable(Level.INFO)).thenReturn(true);
+
         doThrow(new RuntimeException()).when(stringCalculator.logger).info(anyString());
 
         assertThrows(RuntimeException.class, () -> stringCalculator.add("1,2"));
