@@ -1,9 +1,35 @@
 # DotEnv Mockito Kata
 
-We are going to create a utility that helps editing .env files using TDD. The tests will use Mockito to mock the FileIO utility class so that we do not create tests that read or write from disk.  
-Feel free to take a look at [FileIOTest.java](src/test/java/se/jonananas/FileIOTest.java) to understand what the utility class does.
+The purpose of this kata is to practice how to TDD unit tests when we have a dependency that access some kind of system resource, i.e using the system resource would make the test slow and possibly system dependent.
 
+We are going to TDD a utility that read/write .env files from/to a Map. A .env file is a text file containing key value pairs of environment variables required by an application at runtime, it can look like this:
+
+```bash
+FOO=bar
+FOOPATH=/path/to/foo
+TAG=v1.5
+```
+
+The tests will use Mockito to mock a FileIO utility class so that our unit tests does not read or write from disk. The purpose of FileIO is to simplify file access by reading and writing lines to a text file. It basically reads and writes text lines as UTF8:
+
+```java
+    fileIO.writeLines(asList("First line", "Second line"), Paths.get("/path/to/file"));
+    List<String> result = fileIO.readLines(path);
+```
+
+See [FileIOTest.java](src/test/java/se/jonananas/FileIOTest.java) to understand what the FileIO class does.
 See [Mockito](http://static.javadoc.io/org.mockito/mockito-core/4.4.0/org/mockito/Mockito.html#1) for help on Mockito.
+
+When we are done with the kata, we should be able to
+
+```java
+    Map<String, String> env = Map.of("KEY", "VALUE", "KEY2", "VALUE2");
+    new DotEnv().write(path, Paths.get(".env"));
+    
+    // At this point a .env file is created, so that we can read it:
+
+    Map<String, String> readEnv = new DotEnv().read(Paths.get(".env"));
+```
 
 ## The kata
 
