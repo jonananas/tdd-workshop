@@ -13,14 +13,14 @@ TAG=v1.5
 The tests will use Mockito to mock a FileIO utility class so that our unit tests does not read or write from disk. The purpose of FileIO is to simplify file access by reading and writing lines to a text file. It basically reads and writes text lines as UTF8:
 
 ```java
-    fileIO.writeLines(asList("First line", "Second line"), Paths.get("/path/to/file"));
+    fileIO.writeLines(java.util.Arrays.asList("First line", "Second line"), java.nio.file.Paths.get("/path/to/file"));
     List<String> result = fileIO.readLines(path);
 ```
 
 See [FileIOTest.java](src/test/java/se/jonananas/FileIOTest.java) to understand what the FileIO class does.
 See [Mockito](http://static.javadoc.io/org.mockito/mockito-core/4.4.0/org/mockito/Mockito.html#1) for help on Mockito.
 
-When we are done with the kata, we should be able to
+When we are done with the kata, we should be able to run an integration test like below:
 
 ```java
     Map<String, String> env = Map.of("KEY", "VALUE", "KEY2", "VALUE2");
@@ -39,7 +39,7 @@ When we are done with the kata, we should be able to
 
 2. `DotEnv` class should be created with ```FileIO``` as parameter, ie ```public DotEnv(FileIO fileIO)```
 
-3. `DotEnv::read(Path path)` should return a `Map<String, String>`, e.g. `assertThat(dotEnv.read(path)).isNotNull()`
+3. `DotEnv::read(java.nio.file.Path path)` should return a `java.util.Map<String, String>`, e.g. `assertThat(dotEnv.read(path)).isNotNull()`
 
 4. The map returned by `DotEnv::read(Path path)` should contain key "KEY" mapping to value "VALUE" for file containing "KEY=VALUE"
 
@@ -58,9 +58,10 @@ When we are done with the kata, we should be able to
     - Use `org.mockito.Mockito.eq()`, e.g. `verify(fileIO).writeLines(eq(asList("KEY=VALUE")), eq(path))`
 
 9. Make sure the lines ["KEY=VALUE", "KEY2=VALUE2"] is passed to writeLines for a map `Map.of("KEY", "VALUE", "KEY2", "VALUE2")`
-    - Inject an ArgumentCaptor field using `@Captor ArgumentCaptor<List<String>> captor`
+    - Inject an ArgumentCaptor field into the test class using `@org.mockito.Captor org.mockito.ArgumentCaptor<List<String>> captor`
     - Use `verify(fileIO).writeLines(captor.capture(), any())` to capture the parameter call.
 
 10. Make sure an `IOException` is propagated when `Path` cannot be written to.
+    - Use `doThrow(...).when(fileIO)...
 
-You are done! You can optionally write and run an integration test to prove the file is read and written correctly!
+You are done! But write and run the integration test above to prove the file is read and written correctly!
