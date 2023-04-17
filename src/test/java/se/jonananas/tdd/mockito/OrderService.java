@@ -2,14 +2,18 @@ package se.jonananas.tdd.mockito;
 
 public class OrderService {
 
-	PaymentServiceClient betalService;
+	PaymentServiceClient paymentService;
  
+	public OrderService(PaymentServiceClient paymentService) {
+		this.paymentService = paymentService;
+	}
+
 	public void addOrder(String order) {
-		betalService.pay(order);
+		paymentService.pay(order);
 	}
 
 	public int getNumberOfOrders() {
-		return betalService.getNumberOfOrdersFor("");
+		return paymentService.getNumberOfOrdersFor("");
 	}
 
 }
