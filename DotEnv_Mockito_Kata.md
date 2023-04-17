@@ -5,9 +5,8 @@ The purpose of this kata is to practice how to TDD unit tests when we have a dep
 We are going to TDD a utility that read/write .env files from/to a Map. A .env file is a text file containing key value pairs of environment variables required by an application at runtime, it can look like this:
 
 ```bash
-FOO=bar
+VERSION=v1.5
 FOOPATH=/path/to/foo
-TAG=v1.5
 ```
 
 The tests will use Mockito to mock a FileIO utility class so that our unit tests does not read or write from disk. The purpose of FileIO is to simplify file access by reading and writing lines to a text file. It basically reads and writes text lines as UTF8:
@@ -23,11 +22,10 @@ See [Mockito](http://static.javadoc.io/org.mockito/mockito-core/4.4.0/org/mockit
 When we are done with the kata, we should be able to run an integration test like below:
 
 ```java
-    Map<String, String> env = Map.of("KEY", "VALUE", "KEY2", "VALUE2");
+    Map<String, String> env = Map.of("VERSION", "1.5", "FOOPATH", "/path/to/foo");
     new DotEnv().write(path, Paths.get(".env"));
     
     // At this point a .env file is created, so that we can read it:
-
     Map<String, String> readEnv = new DotEnv().read(Paths.get(".env"));
 ```
 
