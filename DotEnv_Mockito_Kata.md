@@ -24,7 +24,7 @@ When we are done with the kata, we should be able to run an integration test lik
 ```java
     Map<String, String> env = Map.of("VERSION", "1.5", "FOOPATH", "/path/to/foo");
     new DotEnv().write(path, Paths.get(".env"));
-    
+
     // At this point a .env file is created, so that we can read it:
     Map<String, String> readEnv = new DotEnv().read(Paths.get(".env"));
 ```
@@ -42,7 +42,7 @@ When we are done with the kata, we should be able to run an integration test lik
 4. The map returned by `DotEnv::read(Path path)` should contain key "KEY" mapping to value "VALUE" for file containing "KEY=VALUE"
 
     - e.g. `assertThat(env.get("KEY")).isEqualTo("VALUE")`
-    - Use `org.mockito.Mockito.when()` to tell fileIO what to return, e.g. `when(fileIO.readLines(path)).thenReturn(lines)`
+    - Use `org.mockito.Mockito.when()` to tell fileIO what to return, e.g. `when(fileIO.readLines(path)).thenReturn(List.of("KEY=VALUE"))`
 
 5. Assert that the lines ["KEY=VALUE", "KEY2=VALUE2"] returns a map with the keys KEY and KEY2, e.g. `assertThat(env.keySet()).contains("KEY", "KEY2")`
 

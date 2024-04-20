@@ -19,7 +19,7 @@ import se.jonananas.FileIO;
 class DotEnv {
 
 	FileIO fileIO;
-	
+
 	public DotEnv(FileIO fileIO) {
 		this.fileIO = fileIO;
 	}
@@ -49,7 +49,7 @@ class FileIODummy extends FileIO {
 	public List<String> readLines(Path path) throws IOException {
 		return null;
 	}
-	
+
 	@Override
 	public void writeLines(java.util.List<String> lines, Path path) throws IOException {
 	};
@@ -62,7 +62,7 @@ class FileIOStub extends FileIO {
 	public List<String> readLines(Path path) throws IOException {
 		return Arrays.asList("key=value");
 	}
-	
+
 	@Override
 	public void writeLines(java.util.List<String> lines, Path path) throws IOException {
 	};
@@ -73,12 +73,12 @@ class FileIOStub extends FileIO {
 
 class FileIOSpy extends FileIO {
 	public boolean writeLinesCalled;
-	
+
 	@Override
 	public List<String> readLines(Path path) throws IOException {
 		return null;
 	}
-	
+
 	@Override
 	public void writeLines(java.util.List<String> lines, Path path) throws IOException {
 		writeLinesCalled = true;
@@ -89,12 +89,12 @@ class FileIOSpy extends FileIO {
 
 class FileIOFake extends FileIO {
 	public List<String> fileContents;
-	
+
 	@Override
 	public List<String> readLines(Path path) throws IOException {
 		return fileContents;
 	}
-	
+
 	@Override
 	public void writeLines(java.util.List<String> lines, Path path) throws IOException {
 		this.fileContents = lines;
@@ -103,27 +103,27 @@ class FileIOFake extends FileIO {
 
 
 public class TestDoubles {
-	
+
 	@Test
 	public void shouldIgnoreWrites() throws Exception {
 		DotEnv dotEnv = new DotEnv(new FileIODummy());
 		dotEnv.write(Map.of());
 	}
-	
+
 	@Test
 	public void shouldRead() throws Exception {
 		DotEnv dotEnv = new DotEnv(new FileIOStub());
-		
+
 		assertThat(dotEnv.read()).isNotNull();
 	}
-	
+
 	@Test
 	public void shouldWrite() throws Exception {
 		FileIOSpy fileIO = new FileIOSpy();
 		DotEnv dotEnv = new DotEnv(fileIO);
-		
+
 		dotEnv.write(Map.of());
-		
+
 		assertThat(fileIO.writeLinesCalled).isTrue();
 	}
 
@@ -132,8 +132,8 @@ public class TestDoubles {
 		DotEnv dotEnv = new DotEnv(new FileIOFake());
 
 		dotEnv.write(Map.of("KEY", "VALUE"));
-		
+
 		assertThat(dotEnv.read().get("KEY")).isEqualTo("VALUE");
 	}
-	
+
 }
